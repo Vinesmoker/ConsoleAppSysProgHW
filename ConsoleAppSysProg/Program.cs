@@ -12,44 +12,43 @@ namespace ConsoleAppSysProg
 
         static void Main()
         {
-            string? userName = GetInput("Введите ваше имя: ");
-            while (!IsValidName(userName))
+            string? name = GetInput("Введите ваше имя: ");
+            while (!WrongName(name))
             {
                 WriteLine("Ошибка! Имя не должно содержать цифр или быть пустым!");
-                userName = GetInput("Введите ваше имя: ");
+                name = GetInput("Введите ваше имя: ");
             }
             string? userAge = GetInput("Введите ваш возраст: ");
             int age;
-            while (!int.TryParse(userAge, out age) || age <= 0)
+            while (!int.TryParse(userAge, out age) || age <= 0 || age >= 150)
             {
-                WriteLine("Ошибка! Введите корректный возраст (целое число больше 0).");
+                WriteLine("Ошибка! Введите корректный возраст (целое реальное число)!");
                 userAge = GetInput("Введите ваш возраст: ");
             }
-            string? userOccupation = GetInput("Введите вашу профессию: ");
-            while (!IsValidName(userOccupation))
+            string? profession = GetInput("Введите вашу профессию: ");
+            while (!WrongName(profession))
             {
                 WriteLine("Ошибка! Профессия не должна содержать цифр или быть пустой!");
-                userOccupation = GetInput("Введите вашу профессию: ");
+                profession = GetInput("Введите вашу профессию: ");
             }
-            DisplayMessageBox(userName ?? "", "Имя");
+            DisplayMessageBox(name ?? "", "Имя");
             DisplayMessageBox(age.ToString(), "Возраст");
-            DisplayMessageBox(userOccupation ?? "", "Профессия");
+            DisplayMessageBox(profession ?? "", "Профессия");
             DisplayMessageBox("Спасибо за использование!", "Вот и всё!");
         }
-        static string? GetInput(string prompt)
+        static string? GetInput(string temp)
         {
-            Write(prompt);
+            Write(temp);
             return ReadLine();
         }
         static int DisplayMessageBox(string? message, string caption)
         {
             return MessageBox(IntPtr.Zero, message ?? "", caption, 0);
         }
-        static bool IsValidName(string? name)
+        static bool WrongName(string? name)
         {
             return MyRegex().IsMatch(name ?? "");
         }
-
         [GeneratedRegex(@"^[a-zA-Zа-яА-ЯёЁ-]+$")]
         private static partial Regex MyRegex();
     }
