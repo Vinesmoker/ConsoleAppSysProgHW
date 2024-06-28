@@ -8,7 +8,7 @@ namespace ConsoleAppSysProg
     partial class Program
     {
         [LibraryImport("user32.dll", EntryPoint = "MessageBoxW", StringMarshalling = StringMarshalling.Utf16)]
-        public static partial int MessageBox(IntPtr hWnd, string text, string caption, uint type);
+        public static partial int MessageBox(IntPtr qwehWnd, string text, string caption, uint type);
 
         static void Main()
         {
