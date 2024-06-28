@@ -11,7 +11,7 @@ class Program
 
     static void Main()
     {
-        Console.WriteLine("Нажмите '1', '2' или '3' для воспроизведения звука. Нажмите 'Esc' для выхода.");
+        WriteLine("Нажмите '1', '2' или '3' для воспроизведения звука. Нажмите 'Esc' для выхода.");
 
         ConsoleKey key;
         do
@@ -31,7 +31,7 @@ class Program
                     MessageBeep(0xFFFFFFFF);
                     break;
                 case ConsoleKey.Escape:
-                    Console.WriteLine("Программа завершена.");
+                    WriteLine("Программа завершена.");
                     break;
             }
         } while (key != ConsoleKey.Escape);
