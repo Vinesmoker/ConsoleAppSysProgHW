@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using static System.Console;
-
 class Program
 {
     [DllImport("kernel32.dll")]
@@ -37,3 +36,4 @@ class Program
         } while (key != ConsoleKey.Escape);
     }
 }
+   
