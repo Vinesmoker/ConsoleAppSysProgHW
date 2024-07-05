@@ -36,4 +36,3 @@ class Program
         } while (key != ConsoleKey.Escape);
     }
 }
-   
